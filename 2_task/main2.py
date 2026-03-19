@@ -5,8 +5,16 @@ import tempfile
 from docx import Document
 from openpyxl import load_workbook
 import PyPDF2
-import subprocess
 import sys
+
+def normalize_content_for_csv(content):
+    """
+    Приводит текст к однострочному виду для корректной записи в CSV.
+    Это убирает переносы строк, из-за которых появляются отдельные строки с кавычками.
+    """
+    if content is None:
+        return ""
+    return " ".join(str(content).split())
 
 def extract_text_from_file(file_path, file_type):
     """Извлекает текст из файла в зависимости от его типа"""
@@ -56,6 +64,7 @@ def process_archive(archive_path, archive_name, base_dir, csv_writer):
                         full_path = os.path.join(archive_name, rel_path)
                         file_type = os.path.splitext(file)[1][1:].lower()
                         content = extract_text_from_file(file_path, file_type)
+                        content = normalize_content_for_csv(content)
                         csv_writer.writerow([
                             full_path,
                             file_type,
@@ -83,6 +92,7 @@ def crawl_directory(directory_path):
                 else:
                     # Обрабатываем обычный файл
                     content = extract_text_from_file(file_path, file_type)
+                    content = normalize_content_for_csv(content)
                     csv_writer.writerow([
                         rel_path,
                         file_type,
