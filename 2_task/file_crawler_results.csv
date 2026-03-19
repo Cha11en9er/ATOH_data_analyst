@@ -1,0 +1,13 @@
+Path,Type,Content
+archive.7z\7z_csv.csv,csv,"csv file 1 inside 7z archive"
+archive.7z\7z_xlsx.xlsx,xlsx,xlsx file 1 inside 7z archive
+archive.rar\rar_csv.csv,csv,"csv file 1 inside rar archive"
+archive.rar\rar_docx.docx,docx,docx file 1 inside rar archive
+archive.zip\zip_pdf.pdf,pdf,"pdf file 1 inside zip archive"
+archive.zip\zip_txt.txt,txt,txt file 1 inside zip archive
+file1.txt,txt,txt file number 1
+file2.csv,csv,"csv file number 2"
+file3.docx,docx,docx file number 3
+file4.xlsx,xlsx,xlsx file number 4
+file5.pdf,pdf,"pdf file number 5"
+data2\file2.txt,txt,txt file number 2
